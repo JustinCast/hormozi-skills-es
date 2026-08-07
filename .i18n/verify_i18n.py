@@ -44,6 +44,21 @@ MULTIPLICA = "×"     # ×
 # Fences cuyo contenido debe quedar byte a byte idéntico al original.
 FENCES_LITERALES = {"json", "bash", "gitignore", "sh", "shell"}
 
+# Literales que el aparato canónico PRESCRIBE en inglés. Sin enmascararlos, el
+# detector de residuo inglés los reporta como si fueran texto sin traducir.
+#   - Las expansiones de DFY/DWY/DIY: GLOSARIO-ES.md, fila `DFY / DWY / DIY`
+#     ("las expansiones también quedan en inglés, sin glose").
+#   - El acróstico MAGIC: NUCLEO-INLINE.md §A ("se conserva la línea en inglés
+#     byte a byte y se agrega un glose en español precedido de ' — '"), incluidas
+#     sus palabras contenedoras.
+LITERALES_PRESCRITOS = [
+    "Done For You", "Done With You", "Do It Yourself",
+    "done-for-you", "done-with-you", "do-it-yourself",
+    "Make it about them", "Announce the avatar", "Give a clear goal",
+    "Indicate a time frame", "Container word",
+    "system / program / accelerator / blueprint / bootcamp",
+]
+
 # Palabras función inglesas: si sobreviven fuera de un fence literal, la línea
 # probablemente quedó sin traducir.
 RESIDUO_EN = re.compile(
@@ -236,7 +251,7 @@ def construir_mascara():
     """
     estrictos, presencia = cargar_no_traducir()
     _, keeps = cargar_glosario()
-    tokens = set(estrictos) | set(presencia) | set(keeps)
+    tokens = set(estrictos) | set(presencia) | set(keeps) | set(LITERALES_PRESCRITOS)
     # Los más largos primero: 'OFFER_ANGLES.md' debe consumirse antes que 'OFFER.md'.
     orden = sorted((t for t in tokens if len(t) >= 3), key=len, reverse=True)
     if not orden:

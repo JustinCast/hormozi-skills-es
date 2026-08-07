@@ -217,7 +217,7 @@ En `hormozi-pitch` las líneas no llevan la negrita de la inicial ni el parénte
 | no-brainer | decisión obvia | NO | 1/1 | |
 | payment plan | plan de pagos | NO | 3/2 | |
 | early-bird pricing | precio early bird | PARCIAL | 2/2 | |
-| money-back | devolución del dinero | NO | 3/3 | `30-day money back` → **devolución a los 30 días**. |
+| money-back | devolución del dinero | NO | 3/3 | `30-day money back` → **garantía de devolución de 30 días**. Los 30 días son la VENTANA para pedir el reembolso, no la fecha en que se paga: «devolución a los 30 días» invierte el sentido. |
 | refund | reembolso | NO | 3/2 | |
 | A/B test | test A/B | NO | 2/2 | |
 | conversion / conversions | conversión / conversiones | NO | 29/13 | |
